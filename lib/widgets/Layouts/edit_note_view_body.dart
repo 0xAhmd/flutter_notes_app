@@ -24,15 +24,12 @@ class EditNoteViewBody extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(right: 18),
-              child: GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: const CustomIcon(
-                  height: 40,
-                  width: 40,
-                  icon: Icon(Icons.check),
-                ),
+            const Padding(
+              padding: EdgeInsets.only(right: 18),
+              child: CustomIcon(
+                height: 40,
+                width: 40,
+                icon: Icon(Icons.check),
               ),
             ),
           ],
