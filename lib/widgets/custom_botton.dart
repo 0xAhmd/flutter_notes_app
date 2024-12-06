@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton(
       {super.key,
+      this.isLoading = false,
       required this.title,
       required this.height,
       required this.color,
@@ -14,6 +15,7 @@ class CustomButton extends StatelessWidget {
   final double width;
   final Color color;
   final VoidCallback onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +29,18 @@ class CustomButton extends StatelessWidget {
             height: height,
             decoration: BoxDecoration(
                 color: color, borderRadius: BorderRadius.circular(8)),
-            child: Text(title,
-                style: GoogleFonts.lato(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold))),
+            child: isLoading
+                ? const SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ))
+                : Text(title,
+                    style: GoogleFonts.lato(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold))),
       ),
     );
   }

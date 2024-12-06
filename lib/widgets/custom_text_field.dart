@@ -27,7 +27,7 @@ class CustomTextField extends StatelessWidget {
           validator: (value) {
             if (value?.isEmpty ?? true) {
               return 'This field Cannot be empty, Please enter some text';
-            }else{
+            } else {
               return null;
             }
           },
@@ -38,6 +38,10 @@ class CustomTextField extends StatelessWidget {
           style: const TextStyle(color: Colors.white),
           keyboardType: keyboardType, // Specifies the keyboard type
           decoration: InputDecoration(
+            errorStyle: const TextStyle(color: Colors.white),
+            errorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
             enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(5)),
               borderSide: BorderSide(color: Colors.white),
