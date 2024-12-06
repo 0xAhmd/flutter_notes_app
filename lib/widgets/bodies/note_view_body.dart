@@ -15,7 +15,7 @@ class NotesViewBody extends StatelessWidget {
           AppBarCustom(),
           Expanded(
             child: ItemListView(),
-          )
+          ),
         ],
       ),
     );
