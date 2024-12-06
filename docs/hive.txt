@@ -5,3 +5,7 @@ step 2.1 -> give id for the object @HiveType(id)
 step 2.2 -> give id for the object fields @HiveField(id)
 step 2.5 -> part for the type adabtor
 step 3 -> generate the type adabtor // run in terminal (flutter packages pub run build_runner build)
+step 4 -> init hive_flutter in the main dart file (asynchronos) then open up a box 
+(recommended to make the box name as constant)
+step 5 -> take the input from the user , format it and validate it 
+step 6 -> save the inputs in the hive db 

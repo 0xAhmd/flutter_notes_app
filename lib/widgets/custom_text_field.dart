@@ -5,14 +5,16 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onChange;
   final TextInputType keyboardType;
   final double? height; // Optional height parameter
-  final int maxLines; // Allows setting a custom height
+  final int maxLines;
+  final void Function(String?)? onSaved; // Allows setting a custom height
   const CustomTextField(
       {super.key,
       required this.hintText,
       this.onChange,
       this.keyboardType = TextInputType.text, // Defaults to general text input
       this.height,
-      required this.maxLines // Allows setting a custom height
+      required this.maxLines,
+      this.onSaved // Allows setting a custom height
       });
 
   @override
@@ -21,7 +23,15 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
       child: SizedBox(
         height: height, // Sets the height if provided
-        child: TextField(
+        child: TextFormField(
+          validator: (value) {
+            if (value?.isEmpty ?? true) {
+              return 'This field Cannot be empty, Please enter some text';
+            }else{
+              return null;
+            }
+          },
+          onSaved: onSaved,
           maxLines: maxLines,
           onChanged: onChange,
           cursorColor: Colors.blue,
