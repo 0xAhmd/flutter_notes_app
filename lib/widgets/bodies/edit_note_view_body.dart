@@ -10,7 +10,7 @@ class EditNoteViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 50),
+        const SizedBox(height: 70),
         Row(
           children: [
             Padding(
@@ -24,12 +24,15 @@ class EditNoteViewBody extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            const Padding(
-              padding: EdgeInsets.only(right: 18),
-              child: CustomIcon(
-                height: 40,
-                width: 40,
-                icon: Icon(Icons.check),
+            Padding(
+              padding: const EdgeInsets.only(right: 18),
+              child: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: const CustomIcon(
+                  height: 40,
+                  width: 40,
+                  icon: Icon(Icons.check),
+                ),
               ),
             ),
           ],
