@@ -11,13 +11,12 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_view.dart';
 import 'package:notes_app/views/notes_view.dart';
 
-//next 29
-
 void main() async {
   Bloc.observer = MyBlocObserver();
   await Hive.initFlutter();
-  await Hive.openBox<NoteModel>(kNotesBox);
   Hive.registerAdapter(NoteModelAdapter());
+
+  await Hive.openBox<NoteModel>(kNotesBox);
   runApp(
     DevicePreview(
       builder: (context) => const MyApp(),
@@ -30,33 +29,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AddNotesCubit(
-            AddNotesInitial(),
+    return MaterialApp(
+      routes : {
+        NotesView.routeName: (context) => const NotesView(),
+        EditView.routeName: (context) => const EditView(),
+      },
+      theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: kPrimaryColor,
+            iconTheme: IconThemeData(color: Colors.white),
           ),
-        ),
-      ],
-      child: MaterialApp(
-        routes: {
-          NotesView.routeName: (context) => const NotesView(),
-          EditView.routeName: (context) => const EditView(),
-        },
-        theme: ThemeData(
-            appBarTheme: const AppBarTheme(
-              backgroundColor: kPrimaryColor,
-              iconTheme: IconThemeData(color: Colors.white),
-            ),
-            fontFamily: GoogleFonts.lato().fontFamily,
-            scaffoldBackgroundColor: kPrimaryColor,
-            floatingActionButtonTheme: const FloatingActionButtonThemeData(
-              foregroundColor: Colors.white,
-              backgroundColor: Colors.blue,
-            )),
-        debugShowCheckedModeBanner: false,
-        home: const NotesView(),
-      ),
+          fontFamily: GoogleFonts.lato().fontFamily,
+          scaffoldBackgroundColor: kPrimaryColor,
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blue,
+          )),
+      debugShowCheckedModeBanner: false,
+      home: const NotesView(),
     );
   }
 }
