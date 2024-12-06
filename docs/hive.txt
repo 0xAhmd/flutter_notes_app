@@ -1,0 +1,7 @@
+step 1 -> create your model 
+step 1.5 -> add hive for dependecies
+step 2 -> let  your model be a hive object (inherit)
+step 2.1 -> give id for the object @HiveType(id)
+step 2.2 -> give id for the object fields @HiveField(id)
+step 2.5 -> part for the type adabtor
+step 3 -> generate the type adabtor // run in terminal (flutter packages pub run build_runner build)
